@@ -5,6 +5,37 @@ export interface Language {
 }
 
 export const languages: Record<string, Language> = {
+  // --- Lenguajes de Programación ---
+  python: {
+    name: "Python",
+    iconName: "python",
+  },
+  javascript: {
+    name: "JavaScript",
+    iconName: "javascript",
+  },
+  ts: {
+    name: "TypeScript",
+    iconName: "typescript",
+  },
+  html: {
+    name: "HTML 5",
+    iconName: "html",
+  },
+  css: {
+    name: "CSS",
+    iconName: "css",
+  },
+  cpp: {
+    name: "C++",
+    iconName: "cpp",
+  },
+ /* sql: {
+    name: "SQL",
+    iconName: "sql",
+  },
+*/
+  // --- Frameworks y Entornos de Ejecución ---
   angular: {
     name: "Angular",
     iconName: "angular",
@@ -17,98 +48,93 @@ export const languages: Record<string, Language> = {
     name: "Bootstrap",
     iconName: "bootstrap",
   },
-  cloudflare: {
-    name: "Cloudflare",
-    iconName: "cloudflare",
+  node: {
+    name: "Node.js",
+    iconName: "node",
   },
-  html: {
-    name: "HTML 5",
-    iconName: "html",
+   /*
+  django: {
+    name: "Django",
+    iconName: "django",
   },
-  javascript: {
-    name: "JavaScript",
-    iconName: "javascript",
+  fastapi: {
+    name: "FastAPI",
+    iconName: "fastapi",
   },
-  mongo: {
-    name: "MongoDb",
-    iconName: "mongo",
-  },
+  */
+  // --- Bases de Datos ---
   mysql: {
     name: "MySQL",
     className: "bg-[#f6ece1]!",
     iconName: "mysql",
   },
-  wordpress: {
-    name: "Wordpress",
-    iconName: "wordpress",
+   /*
+  postgresql: {
+    name: "PostgreSQL",
+    iconName: "postgresql",
   },
-  node: {
-    name: "Node.js",
-    iconName: "node",
-  },
-  tailwind: {
-    name: "Tailwind CSS",
-    iconName: "tailwind",
-  },
-  figma: {
-    name: "Figma",
-    iconName: "figma",
-  },
-  firebase: {
-    name: "Firebase",
-    iconName: "firebase",
-  },
-  markdown: {
-    name: "Markdown",
-    iconName: "markdown",
-  },
-  php: {
-    name: "PHP",
-    iconName: "php",
-  },
-  sass: {
-    name: "Sass",
-    iconName: "sass",
-  },
-  ts: {
-    name: "TypeScript",
-    iconName: "typescript",
-  },
+  */
+  // --- Cloud, DevOps y Herramientas ---
   git: {
     name: "Git",
     iconName: "git",
-  },
-  css: {
-    name: "CSS",
-    iconName: "css",
   },
   vercel: {
     name: "Vercel",
     iconName: "vercel",
   },
-  netlify: {
-    name: "Netlify",
-    iconName: "netlify",
+   /*
+  aws: {
+    name: "AWS",
+    iconName: "aws",
   },
-  gatsby: {
-    name: "Gatsby",
-    iconName: "gatsby",
+  azure: {
+    name: "Azure",
+    iconName: "azure",
   },
-  windsurf: {
-    name: "Windsurf",
-    iconName: "windsurf-logo",
+  docker: {
+    name: "Docker",
+    iconName: "docker",
   },
-  cursor: {
-    name: "Cursor",
-    iconName: "cursor-ia",
+  ansible: {
+    name: "Ansible",
+    iconName: "ansible",
   },
-  deepseek: {
-    name: "DeepSeek",
-    iconName: "deepseek",
+  terraform: {
+    name: "Terraform",
+    iconName: "terraform",
   },
-  python: {
-    name: "Python",
-    iconName: "python",
+
+  // --- Plataformas de IA y Negocio ---
+  powerbi: {
+    name: "Power BI",
+    iconName: "powerbi",
+  },
+  powerapps: {
+    name: "Power Apps",
+    iconName: "powerapps",
+  },
+  powerautomate: {
+    name: "Power Automate",
+    iconName: "powerautomate",
+  },
+  huggingface: {
+    name: "Hugging Face",
+    iconName: "huggingface",
+  },
+  langchain: {
+    name: "LangChain",
+    iconName: "langchain",
+  },
+    */
+  // --- Otros (del template original) ---
+  markdown: {
+    name: "Markdown",
+    iconName: "markdown",
+  },
+  cloudflare: {
+    name: "Cloudflare",
+    iconName: "cloudflare",
   },
 };
 

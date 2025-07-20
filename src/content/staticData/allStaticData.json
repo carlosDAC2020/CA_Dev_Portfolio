@@ -1,17 +1,17 @@
 {
-  "profileImage": "/images/efeeleprofile.webp",
-  "profileAlt": "Photo of Fernando Aldair López Ponce (EFEELE) for the blog",
+  "profileImage": "/images/CA_dev.webp",
+  "profileAlt": "Photo of Carlos Agamez",
   "profileLink": "/about-me",
-  "profileTitle": "FrontEnd Developer",
-  "profileName": "Fernando López",
-  "github": "https://github.com/EFEELE/NeonMint",
+  "profileTitle": "Software Developer | Data Scientist | Data Analyst",
+  "profileName": "Carlos Agamez",
+  "github": "https://github.com/carlosDAC2020",
   "githubText": "Do you like this blog's design?",
   "portfolioImage": "/images/portfolio.webp",
-  "email": "hello@efeele.dev",
-  "linkedin": "https://www.linkedin.com/in/efeele/",
+  "email": "oruz2019@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/carlos-agamez",
   "instagram": "https://www.instagram.com/efeele.dev/",
   "youtube": "https://www.youtube.com/@efeeledev",
-  "alias": "EFEELE",
+  "alias": "CA_Dev",
   "contactSectionTitle": "Ready to take your idea to the next level?",
   "contactSectionSubtitle": "Let's work together.",
   "contactSectionButtonText": "Contact Me",
@@ -23,11 +23,10 @@
   "linkedinIconName": "linkedin",
   "emailIconName": "envelope",
   "hobbies": [
-    "Writing",
-    "Camping",
-    "Coffee",
+    "Learning New Tech",
+    "Athletics",
+    "Movies & Series",
     "Music",
-    "Movies",
-    "Board Games"
+    "Traveling"
   ]
 }

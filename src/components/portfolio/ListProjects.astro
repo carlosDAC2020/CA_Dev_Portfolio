@@ -22,23 +22,6 @@ allPosts.sort(
       <Icon class="text-3xl dark:text-white text-blacktext" name="code" />
       <Heading text="Projects" textGradient="Completed" level={2} />
     </div>
-
-    <p
-      class="z-2 text-center mx-auto text-lg max-xl:text-base max-w-2xl dark:text-gray-200 text-blacktext my-6 leading-6 font-medium"
-    >
-      I love <b
-        class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
-        >turning ideas into real projects.</b
-      >
-      <br /> Here I show you some of the <b
-        class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
-        >developments</b
-      > I've worked on, applying technology, design, and lots of creativity.
-      <b
-        class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
-        >Check them out!</b
-      >
-    </p>
     <slot />
   </div>
 
@@ -71,8 +54,31 @@ allPosts.sort(
     </button>
   </div>
 </section>
-
 <script>
+  document.querySelector("#moreProjects")?.addEventListener("click", () => {
+    const container = document.querySelector("#containerProjects");
+    const moreProjectsBtn = document.querySelector("#moreProjects");
+
+    if (container && moreProjectsBtn) {
+      // 1. Obtenemos la altura total real del contenedor (incluyendo los proyectos ocultos)
+      const fullHeight = container.scrollHeight + "px";
+
+      // 2. Aplicamos esa altura como un max-height. Esto activará la animación suave.
+      container.style.maxHeight = fullHeight;
+
+      // 3. Ocultamos el botón "View More" porque ya no se necesita.
+      moreProjectsBtn.classList.add("opacity-0", "pointer-events-none");
+
+      // 4. (Opcional pero recomendado) Después de que termine la animación, eliminamos el overflow-hidden
+      // para evitar cualquier problema de recorte si la ventana cambia de tamaño.
+      setTimeout(() => {
+        container.classList.remove("overflow-hidden");
+      }, 500); // Este tiempo debe coincidir con la duración de la transición (duration-500)
+    }
+  });
+</script>
+<script>
+  /* 
   document.querySelector("#moreProjects")?.addEventListener("click", () => {
     const container = document.querySelector("#containerProjects");
     const moreProjectsBtn = document.querySelector("#moreProjects");
@@ -88,4 +94,5 @@ allPosts.sort(
       }, 500);
     }
   });
+  */
 </script>
