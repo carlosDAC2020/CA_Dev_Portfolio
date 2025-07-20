@@ -3,7 +3,7 @@ layout:  /src/layouts/ProjectLayout.astro
 title: 'HashiCorp-Vault-Demo'
 pubDate: 2024-05-13
 description: 'Dynamic Database Credentials with Django and HashiCorp Vault-'
-languages: ["python", "django", "docker", "postgresql","hashicorp-vault"]
+languages: ["python", "django", "docker", "postgresql"]
 image:
   url: "/images/projects/vault-dj-demo.webp"
   alt: "HashiCorp-Vault-Demo"

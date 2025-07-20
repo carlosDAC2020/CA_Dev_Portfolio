@@ -30,11 +30,10 @@ export const languages: Record<string, Language> = {
     name: "C++",
     iconName: "cpp",
   },
- /* sql: {
+  sql: {
     name: "SQL",
     iconName: "sql",
   },
-*/
   // --- Frameworks y Entornos de Ejecución ---
   angular: {
     name: "Angular",
@@ -52,7 +51,6 @@ export const languages: Record<string, Language> = {
     name: "Node.js",
     iconName: "node",
   },
-   /*
   django: {
     name: "Django",
     iconName: "django",
@@ -61,19 +59,18 @@ export const languages: Record<string, Language> = {
     name: "FastAPI",
     iconName: "fastapi",
   },
-  */
+
   // --- Bases de Datos ---
   mysql: {
     name: "MySQL",
     className: "bg-[#f6ece1]!",
     iconName: "mysql",
   },
-   /*
   postgresql: {
     name: "PostgreSQL",
     iconName: "postgresql",
   },
-  */
+
   // --- Cloud, DevOps y Herramientas ---
   git: {
     name: "Git",
@@ -83,7 +80,6 @@ export const languages: Record<string, Language> = {
     name: "Vercel",
     iconName: "vercel",
   },
-   /*
   aws: {
     name: "AWS",
     iconName: "aws",
@@ -110,10 +106,6 @@ export const languages: Record<string, Language> = {
     name: "Power BI",
     iconName: "powerbi",
   },
-  powerapps: {
-    name: "Power Apps",
-    iconName: "powerapps",
-  },
   powerautomate: {
     name: "Power Automate",
     iconName: "powerautomate",
@@ -122,11 +114,7 @@ export const languages: Record<string, Language> = {
     name: "Hugging Face",
     iconName: "huggingface",
   },
-  langchain: {
-    name: "LangChain",
-    iconName: "langchain",
-  },
-    */
+  
   // --- Otros (del template original) ---
   markdown: {
     name: "Markdown",
