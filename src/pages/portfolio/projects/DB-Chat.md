@@ -44,4 +44,4 @@ Second, and more importantly, this project serves as a technical demonstration o
 
 You can find the full source code and detailed setup instructions in the official GitHub repository.
 
-👉 [Explore the code on GitHub](https://github.com/carlosDAC2020/db_agenta)
+👉 [Explore the code on GitHub](https://github.com/carlosDAC2020/db_agent)
