@@ -5,7 +5,7 @@ pubDate: 2025-08-10
 description: 'An interactive chat agent, built on the Model Context Protocol (MCP), to perform database queries using natural language.'
 languages: ["python", "fastapi", "docker", "postgresql", "mcp"]
 image:
-  url: "/images/projects/db-chat-agent.webp"
+  url: "/images/projects/db_chat_initial.webp"
   alt: "DB Chat Agent Interface"
 ---
 
