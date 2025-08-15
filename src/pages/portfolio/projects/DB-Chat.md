@@ -1,7 +1,7 @@
 ---
 layout:  /src/layouts/ProjectLayout.astro
 title: 'DB Chat Agent'
-pubDate: 2024-05-13
+pubDate: 2025-08-10
 description: 'An interactive chat to perform read queries on databases using natural language, powered by AI agents.'
 languages: ["python", "fastapi", "docker", "postgresql"]
 image:
