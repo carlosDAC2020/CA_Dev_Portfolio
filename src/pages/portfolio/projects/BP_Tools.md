@@ -9,13 +9,9 @@ image:
   alt: "BP Tools - Automation Platform"
 ---
 
-## 📋 Project Context
-
 **BP Tools** was a comprehensive web platform I developed during my professional internship at **Tenaris** (2024), specifically for the Industrial Business Partners area. This project was born from the need to automate repetitive manual processes that consumed a significant amount of the team's time, converting tasks that took hours into processes that took minutes.
 
 The system acted as a critical bridge between various internal data sources —such as **Kronos**, **My People**, **Univers**, and corporate documents— transforming inconsistent and dispersed data into structured information ready for decision-making. Although the project was developed in 2024, the platform **continues to be actively used** by the BP team for their daily operations.
-
-![Main Interface](/images/projects/BP_Tools/Vista inicio.png)
 
 ## 🎯 Problem and Solution
 
@@ -274,3 +270,4 @@ As part of the final delivery, I documented future improvements:
 ## 🌐 Repository Note
 
 This was an internal project developed during my internship at **Tenaris**. The source code is **corporate property** and is not publicly available. The images and descriptions presented have been authorized for professional portfolio purposes.
+---
