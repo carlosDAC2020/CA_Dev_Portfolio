@@ -20,7 +20,7 @@ The platform is a suite of specialized tools, each designed to tackle a specific
 #### Kronos News Management
 This is the flagship tool, designed to streamline the consolidation of employee absences (vacations, leaves, disabilities) from different sources like **My People** and **Univers**. The tool guides the user through uploading the necessary files, setting a crucial "cut-off date" to differentiate between new and historical data, and then processes everything.
 
-
+![A brief description of the image](/images/projects/BP_Tools/novedades kronos/v_resultado.png)
 
 The result is a clean, organized dashboard that segments the data into:
 -   **New Records**: Ready for automatic upload into Kronos.
