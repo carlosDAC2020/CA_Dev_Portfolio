@@ -24,7 +24,7 @@ I designed and built **BP Tools**, an integrated suite of web applications that 
 The platform is a collection of purpose-built tools, each targeting a specific pain point:
 
 #### 1. Kronos News Management
-Automated the consolidation of employee absences (vacations, leaves) into a single file ready for bulk upload to Kronos. Its intelligent dashboard proactively categorized records into "Ready for Upload," "Manual Review," and "Potential Errors," reducing a 4-hour weekly task to under 15 minutes.
+Automated the consolidation of employee absences (vacations, leaves) into a single file ready for bulk upload to Kronos. Its intelligent dashboard proactively categorized records into **Ready for Upload**, **Manual Review**, and **Potential Errors**, reducing a 4-hour weekly task to under 15 minutes.
 
 ![Results Dashboard for Kronos News](/images/projects/BP_Tools/novedades_kronos/v_resultado.png)
 
@@ -36,6 +36,7 @@ These tools ingested raw reports from Kronos and Power BI, automatically generat
 #### 3. AI-Powered Work Organization
 Generated formal organizational structure documents and featured an interactive **OpenStreetMap** to visualize work locations. This tool offered two generation modes: a fast, regex-based local process, and an advanced mode using the **Gemini API** to intelligently rewrite and format job descriptions. I implemented a smart JSON cache to minimize API calls, optimizing for cost and speed.
 
+![AI Generation Modal for Work Organization Documents](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_inicial.png)
 ![AI Generation Modal for Work Organization Documents](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_modal.png)
 
 #### 4. BP_Agent - Integrated Virtual Assistant
@@ -67,11 +68,9 @@ This approach allowed for rapid iteration while maintaining a robust and testabl
 
 -   **Successfully automated 4 critical, high-volume HR workflows**, saving the team dozens of hours per month.
 -   **Achieved over 85% reduction in manual processing time** and near-zero data entry errors.
--   **Drove 100% user adoption** across the entire 15-person BP team.
+-   **Drove 100% user adoption** across the entire 4-person BP team.
 -   **Engineered a multi-platform solution**, orchestrating data flows between Django, SharePoint, and Power Automate.
 -   **Delivered the first AI-integrated tool in the area**, demonstrating the value of modern technology in a corporate setting.
 
 ## 🌐 Repository Note
-
 As this was an internal project developed for **Tenaris**, the source code is proprietary and not publicly available. The documentation and images presented here have been authorized for use in my professional portfolio.
----
