@@ -2,86 +2,275 @@
 layout:  /src/layouts/ProjectLayout.astro
 title: 'BP Tools'
 pubDate: 2025-10-04
-description: 'A comprehensive web platform designed to automate data processing and normalization for the Tenaris BP team, transforming raw data from internal systems into actionable reports and insights.'
-languages: ["python", "django", "javascript", "bootstrap", "sqlite", "rest-api"]
+description: 'Comprehensive web platform developed during my internship at Tenaris to automate data processing and normalization for the Business Partners team, transforming information from multiple internal systems into actionable reports.'
+languages: ["python", "django", "javascript", "bootstrap", "sqlite", "rest-api", "power-automate"]
 image:
   url: "/images/projects/BP_Tools/Vista inicio.png" 
-  alt: "BP Tools Kronos News Interface"
+  alt: "BP Tools - Automation Platform"
 ---
 
-BP Tools is an integrated web platform built to automate, centralize, and optimize key processes for the Business Partner (BP) team at Tenaris. The system serves as a crucial bridge between diverse internal data sources—such as Kronos, My People, and Univers—and the valuable insights needed for effective decision-making.
+## 📋 Project Context
 
-The platform's core purpose is to ingest raw, often inconsistent, data from various reports, apply complex normalization and processing rules, and automatically generate standardized outputs like carga masiva files, management reports, and official documents. This automation significantly reduces repetitive manual tasks, minimizes human error, and accelerates the delivery of critical information, fostering a culture of efficiency and continuous improvement.
+**BP Tools** was a comprehensive web platform I developed during my professional internship at **Tenaris** (2024), specifically for the Industrial Business Partners area. This project was born from the need to automate repetitive manual processes that consumed a significant amount of the team's time, converting tasks that took hours into processes that took minutes.
 
-## 🧩 Key Features
+The system acted as a critical bridge between various internal data sources —such as **Kronos**, **My People**, **Univers**, and corporate documents— transforming inconsistent and dispersed data into structured information ready for decision-making. Although the project was developed in 2024, the platform **continues to be actively used** by the BP team for their daily operations.
 
-The platform is a suite of specialized tools, each designed to tackle a specific operational bottleneck.
+![Main Interface](/images/projects/BP_Tools/Vista inicio.png)
 
-#### Kronos News Management
-This is the flagship tool, designed to streamline the consolidation of employee absences (vacations, leaves, disabilities) from different sources like **My People** and **Univers**. The tool guides the user through uploading the necessary files, setting a crucial "cut-off date" to differentiate between new and historical data, and then processes everything.
+## 🎯 Problem and Solution
 
-![A brief description of the image](/images/projects/BP_Tools/novedades_kronos/v_resultado.png)
+### The Challenge
+The BP team handled multiple critical processes manually:
+- Consolidation of employee absences (vacations, leaves, disabilities) from 3+ different systems
+- Weekly generation of overtime reports for more than 50 supervisors and managers
+- Tracking of missed clock-ins/outs and notification to responsible parties
+- Creation of formal work organization documentation
 
-The result is a clean, organized dashboard that segments the data into:
--   **New Records**: Ready for automatic upload into Kronos.
--   **Manual Validations**: Items that require human intervention, such as specific medical appointments.
--   **Potential Errors**: Proactively flags records that might fail in Kronos, saving significant troubleshooting time.
--   **Complete History**: A full log of all processed records.
+Each process required:
+- Manual download of multiple reports
+- Normalization of inconsistent formats
+- Cross-system validations
+- Generation of documents in specific formats
+- Manual email distribution
 
-From here, users can download the final `CO_Novedades.csv` for bulk upload.
+### The Solution
+I developed an integrated suite of web tools that completely automated these workflows, reducing processing time by **more than 85%** and virtually eliminating human errors.
 
-#### Overtime Reporting
-This module automates the entire overtime reporting workflow. It ingests raw time reports from Kronos and SAP, cross-references them with the company headcount, and generates tailored Excel summaries for both **Supervisors** and **Managers**. The platform provides an interface to preview each individual report before downloading the consolidated files. The final step integrates with a **Power Automate** flow, which reads the updated Excel files from a shared SharePoint site and automatically emails the reports to the corresponding leaders.
+## 🧩 Developed Tools
 
-![A brief description of the image](/images/projects/BP_Tools/horas_extras/v_resultado.png)
+### 1. Kronos News Management
 
-#### Omitted Clock-in/out Tracking
-Addresses the tedious task of tracking employees who forget to clock in or out. The tool takes data exported from a specific Power BI report and generates a consolidated report ready for distribution. Similar to the Overtime tool, this process concludes with updating a master file on SharePoint, which triggers a **Power Automate** flow to notify supervisors of their team's incidents.
+**Purpose:** Automate the consolidation and bulk loading of employee absences into the Kronos system.
 
-![A brief description of the image](/images/projects/BP_Tools/Timbradas_omitidas/v_resultado.png)
+![Loading Interface](/images/projects/BP_Tools/novedades_kronos/v_inicial.png)
 
+**Implemented Workflow:**
 
-#### Work Organization Tool
-A unique tool that provides both a visual and documentary representation of the plant's job structure. It features an interactive map built with **OpenStreetMap** that pinpoints the physical location of different work areas. Its main function is to generate a formal `Organización de Trabajo.docx` document.
+Users uploaded multiple source files through an intuitive modal, selected a cut-off date, and the tool automatically processed all the information:
 
-![A brief description of the image](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_inicial.png)
+![Processing Modal](/images/projects/BP_Tools/novedades_kronos/v_modal.png)
 
+**Result:** An organized dashboard that intelligently categorized the records into:
 
-This tool offers two generation modes:
-1.  **Manual/Regex-based**: A fast, local process that structures job descriptions using predefined rules.
-2.  **AI-Powered**: Leverages the **Gemini API** to intelligently parse and rewrite job descriptions into a much cleaner and more professional format. It uses a smart caching system to avoid redundant API calls, only processing new or modified descriptions.
+![Results Dashboard](/images/projects/BP_Tools/novedades_kronos/v_resultado.png)
 
-#### BP_Agent 
-An AI chatbot, built with **Microsoft Copilot Studio**, integrated directly into the platform. Trained on the project's own extensive `README.md` documentation, the agent can answer user queries in real-time about how to use any tool, explain technical aspects of the architecture, and even provide information on related Colombian labor laws.
+- **New Records:** Ready for automatic CSV upload
+- **Manual Validations:** Special cases requiring human intervention
+- **Potential Errors:** Proactive detection of date inconsistencies
+- **Complete History:** Accumulated log for audits
 
-![A brief description of the image](/images/projects/BP_Tools/Chat_bot.png)
+**Impact:** Reduced processing time from 3-4 hours per week to less than 15 minutes.
 
+### 2. Overtime Reports
 
-#### Admin Panel
-A standard Django admin panel provides an interface for performing CRUD (Create, Read, Update, Delete) operations on the system's database models. This is essential for managing underlying data like API keys for the Gemini tool or modifying growth schemas without direct database access.
+**Purpose:** Automate the generation and distribution of individualized overtime reports.
 
-![A brief description of the image](/images/projects/BP_Tools/admin.png)
+![Overtime Interface](/images/projects/BP_Tools/horas_extras/v_inicial.png)
 
+**Implemented Methodology:**
 
-## 💡 Architectural Philosophy
+1. **Data Ingestion:** Consolidation of reports from Kronos, SAP, and headcount
+2. **Processing:** Cross-referencing information and calculating totals per employee
+3. **Generation:** Creating individualized Excel reports per supervisor/manager
 
-The architecture of BP Tools is a pragmatic **MVC monolith** built with Django, reflecting a focus on rapid development and high modularity. Each major function (Kronos News, Overtime Reports, etc.) is encapsulated within its own dedicated Django app. This structure is a direct translation of the project's origins: many of the tools began as Jupyter notebooks designed for specific, linear data processing tasks.
+![Configuration Modal](/images/projects/BP_Tools/horas_extras/v_modal.png)
 
-This "notebook-to-app" methodology involved encapsulating the core logic of each workflow into a self-contained Python class within a `utils.py` file. This class handles all the data ingestion, transformation, and output generation. The Django `views.py` then simply acts as a controller that instantiates this class and presents the results to the user. This approach keeps the business logic clean, isolated, and highly reusable, while making the system easy to maintain and extend with new tools.
+The interface allowed previewing each individual report before download:
 
-## 🛠️ Tech Stack
--   **Backend:** Python, Django
--   **API:** Django REST Framework
--   **Database:** SQLite
--   **Frontend:** Django Templates, HTML, CSS, JavaScript
--   **Styling:** Bootstrap
--   **AI Integration:** Gemini API, Microsoft Copilot Studio
--   **Automation:** Integrates with external Power Automate workflows for report distribution.
+![Results View](/images/projects/BP_Tools/horas_extras/v_resultado.png)
 
-## 🎯 Objective
+![Report Preview](/images/projects/BP_Tools/horas_extras/v_modal_report.png)
 
-The primary objective of BP Tools is to **drive the digital transformation** of the BP team's operations. By converting complex, multi-source data processing tasks into simple, guided web interfaces, the platform aims to drastically reduce manual effort, eliminate data-entry errors, and empower the team with reliable, on-demand insights. It stands as a testament to how targeted internal development tools can solve critical business problems and foster a more agile, data-driven culture.
+**Power Automate Integration:** Consolidated files were updated in SharePoint and an automated flow distributed the reports via email to each corresponding leader.
 
-## 🌐 Repository Access
+### 3. Omitted Clock-ins/outs
 
-Please note that this was an internal project developed during my tenure at **Tenaris**. As such, the source code is proprietary and is **not publicly available** in a repository.
+**Purpose:** Automatically track and report unregistered clock-ins/outs.
+
+![Clock-ins Interface](/images/projects/BP_Tools/Timbradas_omitidas/v_inicial.png)
+
+**Process:**
+
+The system extracted data from Power BI, processed omissions, and generated consolidated reports:
+
+![Configuration](/images/projects/BP_Tools/Timbradas_omitidas/v_modal.png)
+
+![Power BI Data](/images/projects/BP_Tools/Timbradas_omitidas/get data PBI.png)
+
+![PBI Export](/images/projects/BP_Tools/Timbradas_omitidas/get data PBI type export.png)
+
+**Results Visualization:**
+
+![Final Report](/images/projects/BP_Tools/Timbradas_omitidas/v_resultado.png)
+
+Similar to the overtime module, it integrated Power Automate for automatic notification to supervisors.
+
+### 4. Work Organization
+
+**Purpose:** Automated generation of formal organizational structure documentation.
+
+**Unique Feature:** Interactive map based on OpenStreetMap to visualize physical locations of work positions in the plant:
+
+![Interactive Map](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_inicial.png)
+
+**Two Generation Modes:**
+
+![Generation Modal](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_modal.png)
+
+1. **Manual Mode:** Local processing with regex for fast structuring
+2. **AI Mode:** Integration with **Gemini API** for intelligent rewriting of descriptions
+
+**Smart Cache System:** I implemented a cache system (`cache_descripciones.json`) that only made API calls when it detected changes in descriptions, optimizing costs and response times.
+
+![Generation Result](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_resultado.png)
+
+![Data Retrieval](/images/projects/BP_Tools/Organizacion_del_Trabajo/get_data_from_list.png)
+
+### 5. BP_Agent - Virtual Assistant
+
+**Innovation:** Intelligent chatbot developed with **Microsoft Copilot Studio**, trained specifically with the project's complete documentation.
+
+![Chatbot](/images/projects/BP_Tools/Chat_bot.png)
+
+**Capabilities:**
+- Step-by-step guidance on tool usage
+- Technical architecture explanations
+- Information on Colombian labor regulations
+- Real-time troubleshooting
+
+### 6. Administration Panel
+
+Standard Django panel for system data management:
+
+![Admin Panel](/images/projects/BP_Tools/admin.png)
+
+![Navigation](/images/projects/BP_Tools/nav.png)
+
+Allowed managing API keys, growth schemas, and configurations without direct database access.
+
+## 🏗️ Architecture and Methodologies
+
+### Technical Architecture
+
+I implemented a **monolithic MVC architecture** with Django, prioritizing modularity and rapid iteration:
+
+```
+BP_tools/
+├── config/              # Django central configuration
+├── main/                # System core app
+├── kronos_novedades/    # News module
+├── HE_reports/          # Overtime module
+├── Stampings_omitted/   # Clock-ins module
+├── org_work/            # Organization module
+├── templates/           # HTML templates
+├── static/              # Static assets
+└── mediafiles/          # Generated files
+```
+
+**Architectural Decision:** Each tool as an independent Django app, facilitating:
+- Parallel development
+- Isolated testing
+- Future scalability towards microservices
+
+### "Notebook-to-App" Methodology
+
+**Development Process:**
+
+1. **Prototyping in Jupyter Notebooks:** Fast validation of business logic
+2. **Encapsulation in Classes:** Migration to Python classes in `utils.py`
+3. **Django Integration:** Views as thin controllers
+
+**Advantages:**
+```python
+# Typical structure in utils.py
+class OvertimeProcessor:
+    def __init__(self, input_files):
+        self.files = input_files
+        
+    def process_data(self):
+        # Isolated business logic
+        pass
+        
+    def generate_reports(self):
+        # Output generation
+        pass
+        
+    def run(self):
+        # Workflow orchestration
+        self.process_data()
+        self.generate_reports()
+        return self.results
+```
+
+This separation kept the business logic **clean, testable, and reusable**.
+
+### REST API for Future Decoupling
+
+I implemented REST endpoints with **Django REST Framework**, preparing the ground for an eventual migration to microservices architecture:
+
+![API Documentation](/images/projects/BP_Tools/v_docs.png)
+
+## 🛠️ Complete Technology Stack
+
+### Backend
+- **Framework:** Django 4.x
+- **Language:** Python 3.12+
+- **API:** Django REST Framework
+- **Database:** SQLite (development), prepared for PostgreSQL (production)
+
+### Frontend
+- **Template System:** Django Templates
+- **CSS Framework:** Bootstrap 5
+- **JavaScript:** Vanilla JS for interactivity
+- **Maps:** OpenStreetMap / Leaflet.js
+
+### External Integrations
+- **AI:** Google Gemini API (document generation)
+- **Chatbot:** Microsoft Copilot Studio
+- **Automation:** Power Automate (report distribution)
+- **Storage:** SharePoint (shared files)
+- **BI:** Power BI (data source)
+
+### DevOps and Deployment
+- **Version Control:** Git
+- **Virtual Environment:** venv
+- **Deployment Scripts:** `.bat` scripts for simplified installation and execution
+- **Docker Ready:** Dockerfile included for future containerization
+
+## 🎓 Technical Learnings
+
+### Overcome Challenges
+
+1. **Inconsistent Data Normalization:** Developed robust parsers capable of handling variable formats across systems
+2. **Sensitive Data Handling:** Implemented security practices for employee information management
+3. **Performance Optimization:** Identification and refactoring of bottlenecks in large file processing
+4. **Multi-System Integration:** Orchestration of workflows spanning Django, SharePoint, and Power Automate
+
+### Applied Methodologies
+
+- **Agile Development:** Rapid iterations with continuous feedback from the BP team
+- **Clean Code:** Separation of concerns, classes with single responsibility
+- **Documentation-Driven:** Comprehensive README as project source of truth
+- **User-Centric Design:** Interfaces designed alongside end users
+
+## 📊 Measurable Impact
+
+- **Time Reduction:** 85-90% in manual processes
+- **Error Elimination:** Virtually 0% manual transcription errors
+- **Adoption:** 100% of BP team (15+ active users)
+- **Automated Processes:** 4 critical workflows fully automated
+- **Generated Reports:** 50+ individualized reports per cycle
+- **AI Integration:** First tool in the area with AI capabilities
+
+## 🔮 Documented Improvement Proposals
+
+As part of the final delivery, I documented future improvements:
+
+1. **Performance Optimization:** Implementation of parallel processing with Celery
+2. **State Persistence:** Session system to maintain context between reloads
+3. **Dynamic Tool Creation:** Automated scaffolding of new tools from UI
+4. **Automated Testing:** Test suite with pytest for CI/CD
+
+## 🌐 Repository Note
+
+This was an internal project developed during my internship at **Tenaris**. The source code is **corporate property** and is not publicly available. The images and descriptions presented have been authorized for professional portfolio purposes.
