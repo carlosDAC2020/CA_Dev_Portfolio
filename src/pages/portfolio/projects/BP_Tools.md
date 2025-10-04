@@ -17,10 +17,10 @@ The platform's core purpose is to ingest raw, often inconsistent, data from vari
 
 The platform is a suite of specialized tools, each designed to tackle a specific operational bottleneck.
 
-#### Novedades de Kronos (Kronos News Management)
+#### Kronos News Management
 This is the flagship tool, designed to streamline the consolidation of employee absences (vacations, leaves, disabilities) from different sources like **My People** and **Univers**. The tool guides the user through uploading the necessary files, setting a crucial "cut-off date" to differentiate between new and historical data, and then processes everything.
 
-![Kronos News Modal for file upload](projects/BP_Tools/novedades%20kronos/v_modal.png)
+
 
 The result is a clean, organized dashboard that segments the data into:
 -   **New Records**: Ready for automatic upload into Kronos.
@@ -30,34 +30,33 @@ The result is a clean, organized dashboard that segments the data into:
 
 From here, users can download the final `CO_Novedades.csv` for bulk upload.
 
-#### Horas Extras (Overtime Reporting)
+#### Overtime Reporting
 This module automates the entire overtime reporting workflow. It ingests raw time reports from Kronos and SAP, cross-references them with the company headcount, and generates tailored Excel summaries for both **Supervisors** and **Managers**. The platform provides an interface to preview each individual report before downloading the consolidated files. The final step integrates with a **Power Automate** flow, which reads the updated Excel files from a shared SharePoint site and automatically emails the reports to the corresponding leaders.
 
-![Overtime reports generated for each Supervisor](projects/BP_Tools/horas%20extras/v_resultado.png)
 
-#### Timbradas Omitidas (Omitted Clock-in/out Tracking)
+
+#### Omitted Clock-in/out Tracking
 Addresses the tedious task of tracking employees who forget to clock in or out. The tool takes data exported from a specific Power BI report and generates a consolidated report ready for distribution. Similar to the Overtime tool, this process concludes with updating a master file on SharePoint, which triggers a **Power Automate** flow to notify supervisors of their team's incidents.
 
-![Omitted clock-ins report generation modal](projects/BP_Tools/Timbradas%20omitidas/v_modal.png)
 
-#### Organización del Trabajo (Work Organization Tool)
+
+#### Work Organization Tool
 A unique tool that provides both a visual and documentary representation of the plant's job structure. It features an interactive map built with **OpenStreetMap** that pinpoints the physical location of different work areas. Its main function is to generate a formal `Organización de Trabajo.docx` document.
 
-![Work Organization generation modal with AI option](projects/BP_Tools/Organizacion%20del%20Trabajo/v_modal.png)
+
 
 This tool offers two generation modes:
 1.  **Manual/Regex-based**: A fast, local process that structures job descriptions using predefined rules.
 2.  **AI-Powered**: Leverages the **Gemini API** to intelligently parse and rewrite job descriptions into a much cleaner and more professional format. It uses a smart caching system to avoid redundant API calls, only processing new or modified descriptions.
 
-#### BP_Agent - Asistente Virtual
+#### BP_Agent 
 An AI chatbot, built with **Microsoft Copilot Studio**, integrated directly into the platform. Trained on the project's own extensive `README.md` documentation, the agent can answer user queries in real-time about how to use any tool, explain technical aspects of the architecture, and even provide information on related Colombian labor laws.
 
-![BP_Agent Chatbot Interface](projects/BP_Tools/Chat_bot.png)
 
-#### Panel de Administración (Admin Panel)
+
+#### Admin Panel
 A standard Django admin panel provides an interface for performing CRUD (Create, Read, Update, Delete) operations on the system's database models. This is essential for managing underlying data like API keys for the Gemini tool or modifying growth schemas without direct database access.
 
-![BP Tools Admin Panel](projects/BP_Tools/admin.png)
 
 ## 💡 Architectural Philosophy
 
