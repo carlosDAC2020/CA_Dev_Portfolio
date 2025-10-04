@@ -33,16 +33,18 @@ From here, users can download the final `CO_Novedades.csv` for bulk upload.
 #### Overtime Reporting
 This module automates the entire overtime reporting workflow. It ingests raw time reports from Kronos and SAP, cross-references them with the company headcount, and generates tailored Excel summaries for both **Supervisors** and **Managers**. The platform provides an interface to preview each individual report before downloading the consolidated files. The final step integrates with a **Power Automate** flow, which reads the updated Excel files from a shared SharePoint site and automatically emails the reports to the corresponding leaders.
 
-
+![A brief description of the image](/images/projects/BP_Tools/horas_extras/v_resultado.png)
 
 #### Omitted Clock-in/out Tracking
 Addresses the tedious task of tracking employees who forget to clock in or out. The tool takes data exported from a specific Power BI report and generates a consolidated report ready for distribution. Similar to the Overtime tool, this process concludes with updating a master file on SharePoint, which triggers a **Power Automate** flow to notify supervisors of their team's incidents.
 
+![A brief description of the image](/images/projects/BP_Tools/Timbradas_omitidas/v_resultado.png)
 
 
 #### Work Organization Tool
 A unique tool that provides both a visual and documentary representation of the plant's job structure. It features an interactive map built with **OpenStreetMap** that pinpoints the physical location of different work areas. Its main function is to generate a formal `Organización de Trabajo.docx` document.
 
+![A brief description of the image](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_inicial.png)
 
 
 This tool offers two generation modes:
@@ -52,10 +54,13 @@ This tool offers two generation modes:
 #### BP_Agent 
 An AI chatbot, built with **Microsoft Copilot Studio**, integrated directly into the platform. Trained on the project's own extensive `README.md` documentation, the agent can answer user queries in real-time about how to use any tool, explain technical aspects of the architecture, and even provide information on related Colombian labor laws.
 
+![A brief description of the image](/images/projects/BP_Tools/Chat_bot.png)
 
 
 #### Admin Panel
 A standard Django admin panel provides an interface for performing CRUD (Create, Read, Update, Delete) operations on the system's database models. This is essential for managing underlying data like API keys for the Gemini tool or modifying growth schemas without direct database access.
+
+![A brief description of the image](/images/projects/BP_Tools/admin.png)
 
 
 ## 💡 Architectural Philosophy
