@@ -3,13 +3,13 @@ layout: /src/layouts/ProjectLayout.astro
 title: 'BP Tools'
 pubDate: 2025-10-04
 description: 'A production-level automation platform developed during my internship at Tenaris. It transformed key HR workflows, reducing manual processing time by over 85% and is still in active use.'
-languages: ["python", "django", "javascript", "bootstrap", "sqlite", "rest-api", "power-automate", "gemini-api"]
+languages: ["python", "django", "javascript", "bootstrap"]
 image:
   url: "/images/projects/BP_Tools/Vista inicio.png" 
   alt: "BP Tools - Automation Platform"
 ---
 
-**BP Tools** is a production-level web platform I developed from the ground up during my professional internship at **Tenaris** (2024). The project's mission was to solve a critical business need for the Industrial Business Partners (BP) team: automating highly repetitive, error-prone manual workflows that consumed hours each week.
+**BP Tools** is a production-level web platform I developed from the ground up during my professional internship at **Tenaris TuboCaribe**. The project's mission was to solve a critical business need for the Industrial Business Partners (BP) team: automating highly repetitive, error-prone manual workflows that consumed hours each week.
 
 The platform serves as an intelligent data processing engine, ingesting raw information from disparate internal systems like **Kronos**, **My People**, and **Univers**, and transforming it into structured, actionable outputs. The solution was so successful that it was fully adopted by the team and **remains in active daily use** long after my internship concluded.
 
@@ -30,7 +30,7 @@ Automated the consolidation of employee absences (vacations, leaves) into a sing
 
 #### 2. Overtime & Omitted Clock-in Reports
 These tools ingested raw reports from Kronos and Power BI, automatically generating individualized Excel summaries for each supervisor. The workflow was fully integrated with **Power Automate**, which distributed the finalized reports via email to the correct recipients.
-
+![Individual Report Preview for Supervisors](/images/projects/BP_Tools/horas_extras/v_resultado.png)
 ![Individual Report Preview for Supervisors](/images/projects/BP_Tools/horas_extras/v_modal_report.png)
 
 #### 3. AI-Powered Work Organization
