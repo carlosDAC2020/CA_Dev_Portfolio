@@ -3,7 +3,7 @@ layout: /src/layouts/ProjectLayout.astro
 title: 'Intecmar AI Platform'
 pubDate: 2026-01-18
 description: 'A comprehensive microservices platform powered by Generative AI to automate technological surveillance and digital publishing workflows. Features autonomous R&D agents and an automated magazine layout engine.'
-languages: ["python", "fastapi", "langchain", "docker", "postgresql", "google-gemini"]
+languages: ["python", "fastapi", "langchain", "docker", "postgresql"]
 image:
   url: "/images/projects/intecmar_ai/mag_home.png" 
   alt: "Intecmar AI Platform - Dashboard"

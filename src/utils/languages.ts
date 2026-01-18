@@ -116,12 +116,14 @@ export const languages: Record<string, Language> = {
   },
   langchain: {
     name: "LangChain",
-    iconName: "langchain",
+    iconName: "python",
   },
+  /*
   googlegemini: {
     name: "Google Gemini",
     iconName: "google-gemini",
   },
+  */
   
   // --- Otros (del template original) ---
   markdown: {
