@@ -114,6 +114,14 @@ export const languages: Record<string, Language> = {
     name: "Hugging Face",
     iconName: "huggingface",
   },
+  langchain: {
+    name: "LangChain",
+    iconName: "langchain",
+  },
+  googlegemini: {
+    name: "Google Gemini",
+    iconName: "google-gemini",
+  },
   
   // --- Otros (del template original) ---
   markdown: {
