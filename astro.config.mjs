@@ -7,12 +7,18 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://neonmint.efeele.dev",
-  integrations: [preact(), icon(), sitemap({
-    filter: (page) =>
-      !page.includes("/blog/tags") &&
-      !page.includes("/blog/techs"),
-  }),],
+  // CAMBIO AQUÍ: Pon tu dominio real
+  site: "https://www.carlosagamez.dev", 
+  
+  integrations: [
+    preact(), 
+    icon(), 
+    sitemap({
+      filter: (page) =>
+        !page.includes("/blog/tags") &&
+        !page.includes("/blog/techs"),
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()],
