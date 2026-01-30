@@ -8,7 +8,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   // CAMBIO AQUÍ: Pon tu dominio real
-  site: "https://www.carlosagamez.dev", 
+  site: "https://carlosagamez.dev", 
   
   integrations: [
     preact(), 
