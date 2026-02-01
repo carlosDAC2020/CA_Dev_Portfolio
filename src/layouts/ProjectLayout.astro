@@ -7,7 +7,21 @@ import NavArticle from "../components/layout/NavArticle.astro";
 import Contact from "../components/portfolio/Contact.astro";
 const { frontmatter } = Astro.props;
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": frontmatter.title,
+  "description": frontmatter.description,
+  "programmingLanguage": frontmatter.languages,
+  "author": {
+    "@type": "Person",
+    "name": "Carlos Agamez"
+  },
+  "datePublished": frontmatter.pubDate,
+  "image": frontmatter.image?.url ? new URL(frontmatter.image.url, Astro.site) : undefined
+};
 ---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 
 <Layout

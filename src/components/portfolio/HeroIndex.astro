@@ -84,6 +84,15 @@ const [staticData] = await getCollection('staticData');
             iconName="person"
             variant="dark"
           />
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            class="flex items-center gap-2 px-5 py-2.5 rounded-full font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+            download="Carlos_Agamez_CV.pdf"
+          >
+            <Icon name="briefcase" />
+            <span>Download CV</span>
+          </a>
         </div>
       </div>
     </div>
@@ -115,15 +124,14 @@ const [staticData] = await getCollection('staticData');
             href={staticData.data.github}
             aria-label="View this site's code repository on GitHub"
           >
-            <div
-              class="relative flex h-full flex-col gap-8 p-8 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-90 before:transition before:z-0 max-xl:p-5 max-md:p-4 xl:before:bottom-10"
+              <div class="relative flex h-full flex-col gap-8 p-8 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-90 before:transition before:z-0 max-xl:p-5 max-md:p-4 xl:before:bottom-10"
             >
               <div class="z-2">
-                <Heading text="Do you like this design? Credits to the creator" level={3}/>
+                <Heading text="Explore my open source repositories" level={3}/>
                  <span
                   class="bg-linear-to-r from-riptide-500 to-mint-500 bg-clip-text font-black text-transparent dark:from-riptide-300 dark:to-mint-200 text-3xl sm:text-4xl"
                 >
-                  Fernando López
+                  GitHub Profile
                 </span>
               </div>
 
@@ -197,14 +205,56 @@ const [staticData] = await getCollection('staticData');
             Explore them!</span
           >
         </p>
-        <img
-          class="relative left-0 z-0 mt-40 w-full object-cover transition-all ease-in-out duration-500 group-hover:rotate-2 group-hover:scale-185 max-xl:mt-28 max-lg:mt-10 max-sm:mt-0 max-md:scale-100 max-sm:scale-125 scale-180 max-md:group-hover:scale-105 before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:absolute before:left-30 before:-bottom-0 before:h-[80%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition"
-          src={staticData.data.portfolioImage}
-          alt="View of two website interfaces with modern and dark design. The first screen shows the title 'Behind the Code' with a rocket and dark background, explaining the origin of a community software project. The second screen presents a platform for finding speakers, with an attractive design, expert photos, and a prominent search button."
-          loading="lazy"
-          width="480"
-          height="320"
-        />
+        <div class="relative w-full h-[300px] mt-32 max-md:mt-10 flex items-center justify-center perspective-1000">
+          <style>
+            @keyframes smooth-shuffle-1 {
+              0%, 28% { transform: translateZ(50px) scale(1); z-index: 30; opacity: 1; visibility: visible; }
+              33.33%, 61% { transform: translateX(-20%) translateZ(0) rotate(-8deg) scale(0.9); z-index: 20; opacity: 0.7; visibility: visible; }
+              66.66%, 94% { transform: translateX(20%) translateZ(-50px) rotate(8deg) scale(0.8); z-index: 10; opacity: 0.4; visibility: visible; }
+              100% { transform: translateZ(50px) scale(1); z-index: 30; opacity: 1; }
+            }
+            @keyframes smooth-shuffle-2 {
+              0%, 28% { transform: translateX(-20%) translateZ(0) rotate(-8deg) scale(0.9); z-index: 20; opacity: 0.7; visibility: visible; }
+              33.33%, 61% { transform: translateX(20%) translateZ(-50px) rotate(8deg) scale(0.8); z-index: 10; opacity: 0.4; visibility: visible; }
+              66.66%, 94% { transform: translateZ(50px) scale(1); z-index: 30; opacity: 1; visibility: visible; }
+              100% { transform: translateX(-20%) translateZ(0) rotate(-8deg) scale(0.9); z-index: 20; opacity: 0.7; }
+            }
+            @keyframes smooth-shuffle-3 {
+              0%, 28% { transform: translateX(20%) translateZ(-50px) rotate(8deg) scale(0.8); z-index: 10; opacity: 0.4; visibility: visible; }
+              33.33%, 61% { transform: translateZ(50px) scale(1); z-index: 30; opacity: 1; visibility: visible; }
+              66.66%, 94% { transform: translateX(-20%) translateZ(0) rotate(-8deg) scale(0.9); z-index: 20; opacity: 0.7; visibility: visible; }
+              100% { transform: translateX(20%) translateZ(-50px) rotate(8deg) scale(0.8); z-index: 10; opacity: 0.4; }
+            }
+            .animate-smooth-1 { animation: smooth-shuffle-1 12s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+            .animate-smooth-2 { animation: smooth-shuffle-2 12s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+            .animate-smooth-3 { animation: smooth-shuffle-3 12s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+            
+            .project-img {
+              transition: filter 0.5s ease;
+            }
+            .group:hover .project-img {
+              animation-play-state: paused;
+              filter: brightness(1.1);
+            }
+          </style>
+          {
+            (() => {
+              const projectsGlob = import.meta.glob("../../pages/portfolio/projects/*.md", { eager: true });
+              const all = Object.values(projectsGlob);
+              const latest = all.sort((a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()).slice(0, 3);
+              return latest.map((p: any, i) => (
+                <img
+                  class={`absolute w-[85%] rounded-xl shadow-2xl border border-white/10 dark:border-mint-500/20 project-img animate-smooth-${i+1}`}
+                  src={p.frontmatter.image.url}
+                  alt={p.frontmatter.title}
+                  loading="lazy"
+                />
+              ));
+            })()
+          }
+          <!-- Background Glow -->
+          <div class="absolute inset-0 bg-mint-500/20 blur-3xl rounded-full -z-10 opacity-30 group-hover:opacity-50 transition-opacity"></div>
+        </div>
       </article>
     </div>
   </div>

@@ -2,7 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: 'BP Tools'
 pubDate: 2025-10-04
-description: 'A production-level automation platform developed during my internship at Tenaris. It transformed key HR workflows, reducing manual processing time by over 85% and is still in active use.'
+description: 'A production-level automation platform developed at Tenaris. It transformed key HR workflows, reducing manual processing time by over 85%.'
 languages: ["python", "django", "javascript", "bootstrap"]
 image:
   url: "/images/projects/BP_Tools/Vista inicio.png" 
@@ -26,18 +26,18 @@ The platform is a collection of purpose-built tools, each targeting a specific p
 #### 1. Kronos News Management
 Automated the consolidation of employee absences (vacations, leaves) into a single file ready for bulk upload to Kronos. Its intelligent dashboard proactively categorized records into **Ready for Upload**, **Manual Review**, and **Potential Errors**, reducing a 4-hour weekly task to under 15 minutes.
 
-![Results Dashboard for Kronos News](/images/projects/BP_Tools/novedades_kronos/v_resultado.png)
+![Results Dashboard for Kronos News - Python Automation](/images/projects/BP_Tools/novedades_kronos/v_resultado.png)
 
 #### 2. Overtime & Omitted Clock-in Reports
 These tools ingested raw reports from Kronos and Power BI, automatically generating individualized Excel summaries for each supervisor. The workflow was fully integrated with **Power Automate**, which distributed the finalized reports via email to the correct recipients.
 ![Individual Report Preview for Supervisors](/images/projects/BP_Tools/horas_extras/v_resultado.png)
-![Individual Report Preview for Supervisors](/images/projects/BP_Tools/horas_extras/v_modal_report.png)
+![Individual Report Preview for Supervisors - Modal View](/images/projects/BP_Tools/horas_extras/v_modal_report.png)
 
 #### 3. AI-Powered Work Organization
 Generated formal organizational structure documents and featured an interactive **OpenStreetMap** to visualize work locations. This tool offered two generation modes: a fast, regex-based local process, and an advanced mode using the **Gemini API** to intelligently rewrite and format job descriptions. I implemented a smart JSON cache to minimize API calls, optimizing for cost and speed.
 
 ![AI Generation Modal for Work Organization Documents](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_inicial.png)
-![AI Generation Modal for Work Organization Documents](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_modal.png)
+![AI Generation Modal for Work Organization Documents - Completed View](/images/projects/BP_Tools/Organizacion_del_Trabajo/v_modal.png)
 
 #### 4. BP_Agent - Integrated Virtual Assistant
 An intelligent chatbot I built with **Microsoft Copilot Studio** and trained on the project's own documentation. It provided users with real-time, in-app guidance on how to use the tools, troubleshoot issues, and understand technical details.

@@ -1,0 +1,86 @@
+---
+import Layout from "./Layout.astro";
+import DatePub from "../components/blog/DatePub.astro";
+import Capsule from "../components/ui/Capsule.astro";
+import Heading from "../components/ui/Heading.astro";
+import NavArticle from "../components/layout/NavArticle.astro";
+import Contact from "../components/portfolio/Contact.astro";
+const { frontmatter } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": frontmatter.title,
+  "description": frontmatter.description,
+  "author": {
+    "@type": "Person",
+    "name": "Carlos Agamez"
+  },
+  "datePublished": frontmatter.pubDate,
+  "image": frontmatter.image?.url ? new URL(frontmatter.image.url, Astro.site) : undefined,
+  "sameAs": frontmatter.paperUrl ? [frontmatter.paperUrl] : undefined
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<Layout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+  ogimage={frontmatter.image}
+>
+  <section
+    class="relative mx-auto px-8 max-sm:px-4 flex flex-row justify-center gap-6"
+  >
+    <div class="w-64 max-xl:hidden"></div>
+    <article
+      class="flex flex-col gap-8 max-w-3xl max-md:w-full pb-10 pt-8 mt-8 px-14 max-md:px-10 max-sm:px-4  dark:bg-transparent bg-white dark:border-0 border border-neutral-100 rounded-2xl" 
+    >
+      <header class="flex flex-col gap-4" id="start">
+        <div class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+          <DatePub date={frontmatter.pubDate} />
+          {
+            frontmatter.journal && (
+               <>
+                <span>•</span>
+                <span class="text-mint-600 dark:text-mint-400">{frontmatter.journal}</span>
+               </>
+            )
+          }
+        </div>
+
+        <Heading text={frontmatter.title} />
+
+        {
+            frontmatter.paperUrl && (
+                <a href={frontmatter.paperUrl} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-mint-500 text-mint-600 dark:text-mint-400 rounded-full hover:bg-mint-500 hover:text-white dark:hover:text-white transition-all w-fit font-bold shadow-sm hover:shadow-md">
+                    <span>View Published Paper</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                </a>
+            )
+        }
+      
+      </header>
+
+      <figure>
+        {
+          frontmatter.image?.url && (
+            <img
+              class="w-full rounded-xl"
+              src={frontmatter.image.url}
+              alt={frontmatter.image.alt || "Article image"}
+            />
+          )
+        }
+      </figure>
+
+      <div class="markdown " id="content">
+        <slot />
+      </div>
+      
+    </article>
+    <NavArticle title={frontmatter.title} />
+  </section>
+  <Contact />
+</Layout>

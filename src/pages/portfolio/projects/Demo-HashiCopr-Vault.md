@@ -6,7 +6,7 @@ description: 'Dynamic Database Credentials with Django and HashiCorp Vault-'
 languages: ["python", "django", "docker", "postgresql"]
 image:
   url: "/images/projects/vault-dj-demo.webp"
-  alt: "HashiCorp-Vault-Demo"
+  alt: "HashiCorp Vault Demo - Dynamic Database Credentials Architecture"
 --- 
 
 A practical demonstration of how to dramatically improve application security by managing database credentials dynamically with HashiCorp Vault. This project showcases a simple Django application that, instead of using static, long-lived credentials, requests them on-demand from Vault.

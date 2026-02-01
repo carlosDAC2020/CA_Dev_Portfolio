@@ -7,7 +7,22 @@ import NavArticle from "../components/layout/NavArticle.astro";
 import Contact from "../components/portfolio/Contact.astro";
 import Tools from "../components/portfolio/Tools.astro";
 const { frontmatter } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Carlos Agamez",
+  "url": Astro.site,
+  "sameAs": [
+    "https://www.linkedin.com/in/carlos-agamez",
+    "https://github.com/carlosDAC2020"
+  ],
+  "jobTitle": "Software Developer",
+  "image": `${Astro.site}images/CA_dev.webp`,
+  "description": frontmatter.description
+};
 ---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {

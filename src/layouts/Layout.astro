@@ -8,7 +8,7 @@ const {
   description = "Welcome to my portfolio website, where I develop software and share knowledge.",
   ogimage = {
     url: "/images/imagedefault.webp",
-    alt: "Default image of EFEELE",
+    alt: "Default image of Carlos Agamez Portfolio",
   },
 } = Astro.props;
 
@@ -59,13 +59,13 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
     <!-- Web manifest -->
     <link rel="manifest" href="/site.webmanifest" />
 
-    <meta name="description" content={description} />
+    <meta name="description" content={description.substring(0, 155)} />
     <meta name="author" content={SEO.author} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={`${Astro.site}${Astro.url.pathname}`}>
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={pageTitle.substring(0, 60)} />
+    <meta property="og:description" content={description.substring(0, 155)} />
     <meta property="og:image" content={ogimage.url} />
     <meta property="og:image:alt" content={ogimage.alt} />
     <meta property="og:url" content={SEO.url} />

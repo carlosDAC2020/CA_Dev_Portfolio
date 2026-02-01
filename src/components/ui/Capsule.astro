@@ -62,8 +62,9 @@ const getIconContainerClasses = () => {
           class={getIconContainerClasses()}
           role="img"
           aria-label={`${selectedLanguage.name} icon`}
+          style={!selectedLanguage.iconName ? "display: none;" : ""}
         >
-          <Icon class="w-full!" name={selectedLanguage.iconName} />
+          {selectedLanguage.iconName && <Icon class="w-full!" name={selectedLanguage.iconName} />}
         </div>
         {selectedLanguage.name}
       </span>
@@ -78,8 +79,9 @@ const getIconContainerClasses = () => {
         class={getIconContainerClasses()}
         role="img"
         aria-label={`${selectedLanguage.name} icon`}
+        style={!selectedLanguage.iconName ? "display: none;" : ""}
       >
-        <Icon class="w-full!" name={selectedLanguage.iconName} />
+        {selectedLanguage.iconName && <Icon class="w-full!" name={selectedLanguage.iconName} />}
       </div>
       {selectedLanguage.name}
     </span>

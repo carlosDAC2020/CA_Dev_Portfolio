@@ -124,7 +124,7 @@ export const languages: Record<string, Language> = {
     iconName: "google-gemini",
   },
   */
-  
+
   // --- Otros (del template original) ---
   markdown: {
     name: "Markdown",
@@ -137,5 +137,12 @@ export const languages: Record<string, Language> = {
 };
 
 export const getLanguage = (lang: string): Language => {
-  return languages[lang] || languages.html;
+  const normalizedLang = lang.toLowerCase().trim();
+  return (
+    languages[normalizedLang] || {
+      name: lang,
+      iconName: "",
+      className: "bg-gray-200 text-gray-800",
+    }
+  );
 }; 

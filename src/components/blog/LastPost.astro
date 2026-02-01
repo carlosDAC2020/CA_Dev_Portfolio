@@ -1,5 +1,12 @@
 ---
-const allPosts = await Astro.glob("../../pages/blog/posts/*.md");
+const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const allPosts = Object.values(allPostsGlob)
+  .sort(
+    (a: any, b: any) =>
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime()
+  )
+  .slice(0, 3);
 
 import Tag from "../ui/Tag.astro";
 import ReadMore from "../ui/ReadMore.astro";
