@@ -1,9 +1,14 @@
 ---
-const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
-const allPosts = Object.values(allPostsGlob);
 import Tag from "../ui/Tag.astro";
 
-const allTags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", {
+    eager: true,
+});
+const allPosts = Object.values(allPostsGlob);
+
+const allTags = [
+    ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+];
 type VariantType = "default" | "vertical" | "compact";
 const { variant = "default" } = Astro.props as { variant?: VariantType };
 
@@ -12,9 +17,10 @@ const baseClasses = "max-w-7xl";
 
 // Variant-specific classes
 const variantClasses: Record<VariantType, string> = {
-    default: "max-lg:px-8 py-8 max-md:py-4 flex-wrap mx-auto gap-4 max-sm:gap-3 justify-center items-center flex flex-row",
+    default:
+        "max-lg:px-8 py-8 max-md:py-4 flex-wrap mx-auto gap-4 max-sm:gap-3 justify-center items-center flex flex-row",
     vertical: "gap-6 justify-start items-start flex flex-col",
-    compact: "flex-wrap mx-auto gap-2 max-sm:gap-3 justify-start flex flex-row"
+    compact: "flex-wrap mx-auto gap-2 max-sm:gap-3 justify-start flex flex-row",
 };
 
 // Combine base classes with variant-specific classes
@@ -22,12 +28,5 @@ const classes = `${baseClasses} ${variantClasses[variant]}`;
 ---
 
 <div id="tags" class={classes}>
-    {allTags.map((tag) => <Tag tag={tag}></Tag>)}
+    {allTags.map((tag) => <Tag tag={tag} />)}
 </div>
-
-
-
-
-
-
-

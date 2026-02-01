@@ -10,31 +10,34 @@ import Share from "../components/ui/Share.astro";
 const { frontmatter } = Astro.props;
 const currentUrl = `${Astro.site}${Astro.url.pathname}`;
 const tweetText = encodeURIComponent(
-  `"${frontmatter.title}" - by ${frontmatter.author} | EFEELE`
+  `"${frontmatter.title}" - by ${frontmatter.author} | EFEELE`,
 );
 import Heading from "../components/ui/Heading.astro";
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": frontmatter.title,
-  "image": frontmatter.image?.url ? new URL(frontmatter.image.url, Astro.site) : undefined,
-  "author": {
+  headline: frontmatter.title,
+  image: frontmatter.image?.url
+    ? new URL(frontmatter.image.url, Astro.site)
+    : undefined,
+  author: {
     "@type": "Person",
-    "name": frontmatter.author || "Carlos Agamez"
+    name: frontmatter.author || "Carlos Agamez",
   },
-  "publisher": {
+  publisher: {
     "@type": "Organization",
-    "name": "Carlos Agamez Portfolio",
-    "logo": {
+    name: "Carlos Agamez Portfolio",
+    logo: {
       "@type": "ImageObject",
-      "url": `${Astro.site}favicon.svg`
-    }
+      url: `${Astro.site}favicon.svg`,
+    },
   },
-  "datePublished": frontmatter.pubDate,
-  "description": frontmatter.description
+  datePublished: frontmatter.pubDate,
+  description: frontmatter.description,
 };
 ---
+
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 <script>
@@ -98,13 +101,19 @@ const schema = {
       <header class="flex flex-col gap-4" id="start">
         <div class="flex gap-2 flex-wrap">
           {
-            frontmatter.languages.map((language: string) => (
+            frontmatter.languages.map((language: string, i: number) => (
               <Capsule lang={language} />
             ))
           }
         </div>
         <div class="gap-3 flex flex-wrap justify-start items-center">
-          {frontmatter.tags.map((tag: string) => <Tag tag={tag}>{tag}</Tag>)}
+          {
+            frontmatter.tags.map((tag: string, i: number) => (
+              <Tag tag={tag}>
+                {tag}
+              </Tag>
+            ))
+          }
         </div>
         <DatePub date={frontmatter.pubDate} />
 

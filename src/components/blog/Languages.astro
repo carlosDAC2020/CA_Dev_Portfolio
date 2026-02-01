@@ -1,10 +1,13 @@
 ---
-const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+import Capsule from "../ui/Capsule.astro";
+
+const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", {
+    eager: true,
+});
 const allPosts = Object.values(allPostsGlob);
 const allLanguages = [
     ...new Set(allPosts.map((post: any) => post.frontmatter.languages).flat()),
 ];
-import Capsule from "../ui/Capsule.astro";
 
 const { variant = "default" } = Astro.props;
 
@@ -12,17 +15,16 @@ const baseClasses = "flex flex-wrap";
 
 const variantClasses = {
     default: "gap-3 max-lg:gap-1",
-    vertical: "gap-6 flex-col"
+    vertical: "gap-6 flex-col",
 } as const;
 
 const classes = `${baseClasses} ${variantClasses[variant as keyof typeof variantClasses] || variantClasses.default}`;
 ---
 
 <div class={classes}>
-    {allLanguages.map((language) => (
-        <Capsule lang={language} linkEnabled={true} size="md" />
-    ))}
+    {
+        allLanguages.map((language) => (
+            <Capsule lang={language} linkEnabled={true} size="md" />
+        ))
+    }
 </div>
-
-
-

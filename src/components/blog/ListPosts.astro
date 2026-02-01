@@ -11,11 +11,27 @@ export interface Props {
 
 const { excludeLatest = false, currentPostUrl = "", all = false } = Astro.props;
 
-const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
-const allPosts = Object.values(allPostsGlob).sort(
-  (a: any, b: any) =>
+interface Post {
+  url: string;
+  frontmatter: {
+    title: string;
+    pubDate: string;
+    tags: string[];
+    languages: string[];
+    image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", {
+  eager: true,
+});
+const allPosts = (Object.values(allPostsGlob) as unknown as Post[]).sort(
+  (a, b) =>
     new Date(b.frontmatter.pubDate).getTime() -
-    new Date(a.frontmatter.pubDate).getTime()
+    new Date(a.frontmatter.pubDate).getTime(),
 );
 
 // Filter posts according to props

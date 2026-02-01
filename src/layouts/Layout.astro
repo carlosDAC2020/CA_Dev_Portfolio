@@ -2,7 +2,16 @@
 import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro";
+interface Props {
+  pageTitle?: string;
+  description?: string;
+  ogimage?: {
+    url: string;
+    alt: string;
+  };
+}
+
 const {
   pageTitle = "Portfolio Carlos Agamez 🚀",
   description = "Welcome to my portfolio website, where I develop software and share knowledge.",
@@ -21,7 +30,6 @@ const SEO = {
   twitter: "",
 };
 
-
 const twitterimage = `${siteUrl}${ogimage.url}`;
 ---
 
@@ -33,20 +41,30 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9R3B24VCW6"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9R3B24VCW6"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-9R3B24VCW6');
+      gtag("config", "G-9R3B24VCW6");
     </script>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TLHDD7RR');</script>
+    <script>
+      (function (w, d, s, l, gtmId) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + gtmId + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TLHDD7RR");
+    </script>
     <!-- End Google Tag Manager -->
     <title>{pageTitle}</title>
     <!-- Favicon for different platforms -->
@@ -62,7 +80,7 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
     <meta name="description" content={description.substring(0, 155)} />
     <meta name="author" content={SEO.author} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`${Astro.site}${Astro.url.pathname}`}>
+    <link rel="canonical" href={`${Astro.site}${Astro.url.pathname}`} />
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={pageTitle.substring(0, 60)} />
     <meta property="og:description" content={description.substring(0, 155)} />
@@ -72,7 +90,6 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SEO.sitename} />
     <meta property="og:locale" content={SEO.locale} />
-    
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -81,19 +98,23 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
     <meta name="twitter:image" content={twitterimage} />
     <meta name="twitter:image:alt" content={ogimage.alt} />
     <meta name="twitter:site" content={SEO.twitter} />
-  
-    <meta name="theme-color" content="#0E0E11"/>
+
+    <meta name="theme-color" content="#0E0E11" />
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
-    
   </head>
   <body class="overflow-x-hidden">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLHDD7RR"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TLHDD7RR"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
     <!-- End Google Tag Manager (noscript) -->
-    <SpeedInsights/>
+    <SpeedInsights />
     <div class="blur-circle"></div>
     <div
       style="  background:linear-gradient(45deg, rgba(96, 250, 155, 0) 10.79%, rgba(96, 250, 170, 0.03) 40.92%, rgba(96, 250, 155, 0) 90.35%)"
@@ -102,7 +123,7 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
     </div>
     <Header />
 
-    <div class="min-h-[85vh] ">
+    <div class="min-h-[85vh]">
       <slot />
     </div>
 

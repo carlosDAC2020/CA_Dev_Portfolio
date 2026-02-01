@@ -3,12 +3,25 @@ import Project from "./Project.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
 
-const allPostsGlob = import.meta.glob("../../pages/portfolio/projects/*.md", { eager: true });
-const allPosts = Object.values(allPostsGlob);
+interface Post {
+  url: string;
+  frontmatter: {
+    title: string;
+    pubDate: string;
+    description: string;
+    languages: string[];
+    image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
 
-// Sort by descending date (most recent first)
-allPosts.sort(
-  (a: any, b: any) =>
+const allPostsGlob = import.meta.glob("../../pages/portfolio/projects/*.md", {
+  eager: true,
+});
+const allPosts = (Object.values(allPostsGlob) as unknown as Post[]).sort(
+  (a, b) =>
     new Date(b.frontmatter.pubDate).getTime() -
     new Date(a.frontmatter.pubDate).getTime(),
 );
@@ -47,8 +60,8 @@ allPosts.sort(
         ))
       }
     </div>
-    
-     <div
+
+    <div
       id="moreProjects"
       class="absolute bottom-0 left-0 w-full flex justify-center text-center bg-linear-to-t from-[#FBFEFD] dark:from-[#0e0e10] from-50% to-transparent to-100% pb-12 pt-40 pointer-events-none"
     >
@@ -59,7 +72,6 @@ allPosts.sort(
       </button>
     </div>
   </div>
-
 </section>
 <script>
   const btnContainer = document.querySelector("#moreProjects");
@@ -67,7 +79,9 @@ allPosts.sort(
 
   btn?.addEventListener("click", () => {
     const wrapper = document.querySelector("#projectsWrapper") as HTMLElement;
-    const container = document.querySelector("#containerProjects") as HTMLElement;
+    const container = document.querySelector(
+      "#containerProjects",
+    ) as HTMLElement;
 
     if (wrapper && container && btnContainer) {
       // 1. Get full height from the inner container
@@ -78,32 +92,13 @@ allPosts.sort(
 
       // 3. Hide button container with fade out
       btnContainer.classList.add("opacity-0");
-      
+
       // 4. Remove overflow restriction after animation
       setTimeout(() => {
         wrapper.classList.remove("overflow-hidden");
         wrapper.style.maxHeight = "none";
         btnContainer.remove(); // Remove purely from DOM
-      }, 500); 
-    }
-  });
-</script>
-<script>
-  /* 
-  document.querySelector("#moreProjects")?.addEventListener("click", () => {
-    const container = document.querySelector("#containerProjects");
-    const moreProjectsBtn = document.querySelector("#moreProjects");
-
-    if (container && moreProjectsBtn) {
-      // Expand container to show all projects
-      container.classList.remove("h-[150vh]");
-      container.classList.remove("h-auto");
-      // Hide the "View More" button after animation completes
-      moreProjectsBtn.classList.add("hidden");
-      setTimeout(() => {
-        moreProjectsBtn.classList.add("hidden");
       }, 500);
     }
   });
-  */
 </script>

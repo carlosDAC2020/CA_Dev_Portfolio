@@ -2,8 +2,28 @@
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
 
-const papersGlob = import.meta.glob("../../pages/research/*.md", { eager: true });
-const sortedPapers = Object.values(papersGlob).sort((a: any, b: any) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+interface Paper {
+  url: string;
+  frontmatter: {
+    title: string;
+    pubDate: string;
+    description: string;
+    journal?: string;
+    image?: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+const papersGlob = import.meta.glob("../../pages/research/*.md", {
+  eager: true,
+});
+const sortedPapers = (Object.values(papersGlob) as unknown as Paper[]).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf(),
+);
 ---
 
 <section
@@ -12,7 +32,6 @@ const sortedPapers = Object.values(papersGlob).sort((a: any, b: any) => new Date
 >
   <div class="mx-auto max-w-7xl py-8">
     <div class="flex gap-4 items-center justify-center text-center mb-12">
-      
       <Heading text="Research" textGradient="Papers" level={2} />
     </div>
 
@@ -20,40 +39,51 @@ const sortedPapers = Object.values(papersGlob).sort((a: any, b: any) => new Date
       {
         sortedPapers.map((paper) => (
           <article class="group relative flex flex-col gap-4 bg-white dark:bg-zinc-900 border border-neutral-100 dark:border-white/5 rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-xl dark:shadow-none">
-            <a href={paper.url} class="absolute inset-0 z-10" aria-label={`Read ${paper.frontmatter.title}`}></a>
-            
+            <a
+              href={paper.url}
+              class="absolute inset-0 z-10"
+              aria-label={`Read ${paper.frontmatter.title}`}
+            />
+
             <div class="relative overflow-hidden rounded-xl aspect-video">
-                 {
-                    paper.frontmatter.image?.url ?
-                    <img 
-                        src={paper.frontmatter.image.url} 
-                        alt={paper.frontmatter.image.alt || paper.frontmatter.title} 
-                        class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                    /> : 
-                    <div class="w-full h-full bg-mint-100 dark:bg-mint-900/20 flex items-center justify-center">
-                        <span class="text-4xl">📄</span>
-                    </div>
-                }
+              {paper.frontmatter.image?.url ? (
+                <img
+                  src={paper.frontmatter.image.url}
+                  alt={paper.frontmatter.image.alt || paper.frontmatter.title}
+                  class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                />
+              ) : (
+                <div class="w-full h-full bg-mint-100 dark:bg-mint-900/20 flex items-center justify-center">
+                  <span class="text-4xl">📄</span>
+                </div>
+              )}
             </div>
 
             <div class="flex flex-col gap-2">
-                <div class="flex flex-wrap gap-2 text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                    <span>{new Date(paper.frontmatter.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
-                    <span>•</span>
-                    <span class="text-mint-600 dark:text-mint-400">{paper.frontmatter.journal || "Publication"}</span>
-                </div>
-                
-                <h2 class="text-xl font-bold bg-linear-to-r from-neutral-900 to-neutral-700 dark:from-white dark:to-neutral-300 bg-clip-text text-transparent group-hover:to-mint-500 transition-all">
-                    {paper.frontmatter.title}
-                </h2>
-                
-                <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3">
-                    {paper.frontmatter.description}
-                </p>
+              <div class="flex flex-wrap gap-2 text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                <span>
+                  {new Date(paper.frontmatter.pubDate).toLocaleDateString(
+                    "en-US",
+                    { year: "numeric", month: "short" },
+                  )}
+                </span>
+                <span>•</span>
+                <span class="text-mint-600 dark:text-mint-400">
+                  {paper.frontmatter.journal || "Publication"}
+                </span>
+              </div>
+
+              <h2 class="text-xl font-bold bg-linear-to-r from-neutral-900 to-neutral-700 dark:from-white dark:to-neutral-300 bg-clip-text text-transparent group-hover:to-mint-500 transition-all">
+                {paper.frontmatter.title}
+              </h2>
+
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3">
+                {paper.frontmatter.description}
+              </p>
             </div>
-            
+
             <div class="mt-auto pt-4 flex items-center gap-2 text-sm font-semibold text-mint-600 dark:text-mint-400 group-hover:translate-x-1 transition-transform">
-                Read Paper <span class="text-lg">→</span>
+              Read Paper <span class="text-lg">→</span>
             </div>
           </article>
         ))

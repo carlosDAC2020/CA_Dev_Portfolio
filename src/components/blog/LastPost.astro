@@ -1,17 +1,33 @@
 ---
-const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
-const allPosts = Object.values(allPostsGlob)
-  .sort(
-    (a: any, b: any) =>
-      new Date(b.frontmatter.pubDate).getTime() -
-      new Date(a.frontmatter.pubDate).getTime()
-  )
-  .slice(0, 3);
-
 import Tag from "../ui/Tag.astro";
 import ReadMore from "../ui/ReadMore.astro";
 import Capsule from "../ui/Capsule.astro";
 import DatePub from "./DatePub.astro";
+
+interface Post {
+  url: string;
+  frontmatter: {
+    title: string;
+    pubDate: string;
+    tags: string[];
+    languages: string[];
+    image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+const allPostsGlob = import.meta.glob("../../pages/blog/posts/*.md", {
+  eager: true,
+});
+const allPosts = (Object.values(allPostsGlob) as unknown as Post[])
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime(),
+  )
+  .slice(0, 3);
 
 // Get the latest post using reduce
 const latestPost = allPosts.reduce((latest, current) => {
@@ -64,7 +80,10 @@ const imageAlt =
           aria-label={`Read article: ${latestPost.frontmatter.title}`}
         >
           <div class="gap-3 flex flex-col justify-end drop-shadow-[1px_6px_1px_rgba(0,0,0,0.3)]">
-            <DatePub date={latestPost.frontmatter.pubDate} class="text-mint-50" />
+            <DatePub
+              date={latestPost.frontmatter.pubDate}
+              class="text-mint-50"
+            />
             <h2
               id="post-title"
               class="text-4xl max-xl:text-3xl max-sm:text-2xl font-bold"
@@ -81,7 +100,9 @@ const imageAlt =
           aria-label="Article tags"
         >
           {tags.map((tag) => (
-            <Tag tag={tag} forceDark="true">{tag}</Tag>
+            <Tag tag={tag} forceDark="true">
+              {tag}
+            </Tag>
           ))}
         </div>
       </article>
